@@ -1,4 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from "@google/generative-ai";
 import { ChatMessage } from '../types';
 
 const getClient = () => {
