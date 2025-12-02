@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Info } from 'lucide-react';
+import { Check, Users } from 'lucide-react';
 import { SpiderPackage } from '../types';
 
 interface PricingCardProps {
@@ -8,6 +8,9 @@ interface PricingCardProps {
 }
 
 export const PricingCard: React.FC<PricingCardProps> = ({ pkg, isPopular }) => {
+  // Calculate lowest price per person based on max group size (5 people)
+  const minPricePerPerson = Math.round(pkg.price / 5);
+
   return (
     <div className={`relative flex flex-col p-6 rounded-2xl border transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(0,255,157,0.2)] ${isPopular ? 'border-spider-green bg-spider-green/5' : 'border-zinc-800 bg-zinc-900/50 hover:border-spider-green/50'}`}>
       {isPopular && (
@@ -21,9 +24,28 @@ export const PricingCard: React.FC<PricingCardProps> = ({ pkg, isPopular }) => {
         <p className="text-gray-400 text-sm">{pkg.recommendedFor}</p>
       </div>
 
-      <div className="mb-6 flex items-baseline">
-        <span className="text-3xl font-bold text-spider-green">￥{pkg.price.toLocaleString()}</span>
-        <span className="text-gray-500 ml-2">/ 月</span>
+      {/* Pricing Section */}
+      <div className="mb-6">
+        <div className="flex flex-col gap-1">
+          {/* Highlighted Per Person Price */}
+          <div className="flex items-baseline gap-2">
+            <span className="text-xs font-bold text-spider-green border border-spider-green/30 bg-spider-green/10 px-2 py-0.5 rounded whitespace-nowrap">
+              合租低至
+            </span>
+            <span className="text-4xl font-black text-white tracking-tight">
+              ￥{minPricePerPerson.toLocaleString()}
+            </span>
+            <span className="text-gray-400 text-xs">/人/月</span>
+          </div>
+          
+          {/* Full Package Price Context */}
+          <div className="flex items-center gap-2 mt-2 px-1 py-1.5 bg-black/40 rounded border border-white/5">
+            <Users size={14} className="text-gray-400 shrink-0" />
+            <p className="text-xs text-gray-500">
+              套餐总价：<span className="text-gray-300 font-medium">￥{pkg.price.toLocaleString()}</span> / 月 (支持2-5人均摊)
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="mb-6 p-3 bg-black/40 rounded-lg border border-zinc-800">
