@@ -89,160 +89,162 @@ function App() {
         </div>
       </header>
 
-      {/* Engine Status Bar - Redesigned */}
-      <div className="border-y border-white/10 bg-black/40 backdrop-blur-md relative z-20">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            
-            {/* Label */}
-            <div className="flex items-center gap-3 shrink-0 mb-2 md:mb-0">
-              <div className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-spider-green opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-spider-green"></span>
+      <main role="main">
+        {/* Engine Status Bar - Redesigned */}
+        <div className="border-y border-white/10 bg-black/40 backdrop-blur-md relative z-20">
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              
+              {/* Label */}
+              <div className="flex items-center gap-3 shrink-0 mb-2 md:mb-0">
+                <div className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-spider-green opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-spider-green"></span>
+                </div>
+                <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">
+                  引擎实时状态
+                </span>
               </div>
-              <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">
-                引擎实时状态
-              </span>
+
+              {/* Grid of Engines */}
+              <div className="flex flex-wrap justify-center md:justify-end gap-3 sm:gap-4 w-full">
+                {engines.map((e) => (
+                  <div 
+                    key={e.name} 
+                    className={`
+                      relative group flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-all duration-300 cursor-default
+                      ${e.available 
+                        ? 'bg-spider-green/10 border-spider-green/50 shadow-[0_0_10px_rgba(0,255,157,0.1)] hover:shadow-[0_0_20px_rgba(0,255,157,0.3)] hover:scale-105 hover:bg-spider-green/20' 
+                        : 'bg-zinc-900/40 border-zinc-800 opacity-60 grayscale hover:grayscale-0 hover:opacity-100'}
+                    `}
+                  >
+                    <div className={`
+                      flex items-center justify-center w-8 h-8 rounded-full 
+                      ${e.available ? 'bg-spider-green text-black' : 'bg-zinc-800 text-gray-500'}
+                    `}>
+                      {e.available ? <CheckCircle2 size={16} strokeWidth={3} /> : <div className="w-2 h-2 rounded-full bg-red-500" />}
+                    </div>
+
+                    <div className="flex flex-col">
+                      <span className={`font-black text-lg leading-none ${e.available ? 'text-white' : 'text-gray-400'}`}>
+                        {e.name}
+                      </span>
+                      <span className={`text-[10px] font-bold uppercase tracking-wider mt-0.5 ${e.available ? 'text-spider-green' : 'text-red-400'}`}>
+                        {e.available ? '支持合租' : e.note}
+                      </span>
+                    </div>
+                    
+                    {/* Active Indicator Glow */}
+                    {e.available && <div className="absolute inset-0 rounded-xl border border-spider-green/20 pointer-events-none"></div>}
+                  </div>
+                ))}
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+        {/* Flow & CTA */}
+        <section className="py-20 px-4 text-center" id="flow_cta">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold mb-8">合租流程</h2>
+            <div className="flex flex-row justify-between items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400 mb-12 relative">
+              <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">提交需求</div>
+              <div className="h-px bg-zinc-800 flex-1"></div>
+              <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">自动组群</div>
+              <div className="h-px bg-zinc-800 flex-1"></div>
+              <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">平摊费用</div>
+              <div className="h-px bg-zinc-800 flex-1"></div>
+              <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">开始灌溉</div>
             </div>
 
-            {/* Grid of Engines */}
-            <div className="flex flex-wrap justify-center md:justify-end gap-3 sm:gap-4 w-full">
-              {engines.map((e) => (
-                <div 
-                  key={e.name} 
-                  className={`
-                    relative group flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-all duration-300 cursor-default
-                    ${e.available 
-                      ? 'bg-spider-green/10 border-spider-green/50 shadow-[0_0_10px_rgba(0,255,157,0.1)] hover:shadow-[0_0_20px_rgba(0,255,157,0.3)] hover:scale-105 hover:bg-spider-green/20' 
-                      : 'bg-zinc-900/40 border-zinc-800 opacity-60 grayscale hover:grayscale-0 hover:opacity-100'}
-                  `}
-                >
-                  <div className={`
-                    flex items-center justify-center w-8 h-8 rounded-full 
-                    ${e.available ? 'bg-spider-green text-black' : 'bg-zinc-800 text-gray-500'}
-                  `}>
-                    {e.available ? <CheckCircle2 size={16} strokeWidth={3} /> : <div className="w-2 h-2 rounded-full bg-red-500" />}
-                  </div>
+            <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 p-8 rounded-2xl shadow-xl">
+              <h3 className="text-xl font-bold text-white mb-2">加入合租 / 咨询合作</h3>
+              <p className="text-gray-400 mb-6">请在群内回复以下格式：</p>
+              
+              <div className="bg-black/50 p-4 rounded-lg font-mono text-spider-green mb-6 border border-white/10 select-all">
+                "合租 + 套餐名 + 渠道名"
+              </div>
+              
+              <p className="text-sm text-gray-500 mb-8">例如：合租 3000 套餐 + Bing</p>
+              
+              <a 
+                href="https://qm.qq.com/q/9ZlQXDZQ4g"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-spider-green to-emerald-600 text-black font-black text-lg rounded-full shadow-[0_0_25px_rgba(0,255,157,0.3)] hover:scale-105 hover:shadow-[0_0_40px_rgba(0,255,157,0.5)] transition-all duration-300 animate-pulse-slow"
+              >
+                <MessageCircle size={22} fill="currentColor" className="opacity-80"/>
+                我要合租
+              </a>
+            </div>
+          </div>
+        </section>
 
-                  <div className="flex flex-col">
-                    <span className={`font-black text-lg leading-none ${e.available ? 'text-white' : 'text-gray-400'}`}>
-                      {e.name}
-                    </span>
-                    <span className={`text-[10px] font-bold uppercase tracking-wider mt-0.5 ${e.available ? 'text-spider-green' : 'text-red-400'}`}>
-                      {e.available ? '支持合租' : e.note}
-                    </span>
-                  </div>
-                  
-                  {/* Active Indicator Glow */}
-                  {e.available && <div className="absolute inset-0 rounded-xl border border-spider-green/20 pointer-events-none"></div>}
-                </div>
+        {/* Pricing Section */}
+        <section id="pricing" className="pb-12 pt-5 px-4 mt-5">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">产品套餐</h2>
+              <p className="text-gray-400">统一价格，全渠道适配，按需选择</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {PACKAGES.map((pkg) => (
+                <PricingCard key={pkg.id} pkg={pkg} isPopular={pkg.id === PackageType.BASIC} />
               ))}
             </div>
-            
           </div>
-        </div>
-      </div>
+        </section>
 
-      {/* Flow & CTA */}
-      <section className="py-20 px-4 text-center" id="flow_cta">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold mb-8">合租流程</h2>
-          <div className="flex flex-row justify-between items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400 mb-12 relative">
-            <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">提交需求</div>
-            <div className="h-px bg-zinc-800 flex-1"></div>
-            <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">自动组群</div>
-            <div className="h-px bg-zinc-800 flex-1"></div>
-            <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">平摊费用</div>
-            <div className="h-px bg-zinc-800 flex-1"></div>
-            <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">开始灌溉</div>
-          </div>
-
-          <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 p-8 rounded-2xl shadow-xl">
-            <h3 className="text-xl font-bold text-white mb-2">加入合租 / 咨询合作</h3>
-            <p className="text-gray-400 mb-6">请在群内回复以下格式：</p>
-            
-            <div className="bg-black/50 p-4 rounded-lg font-mono text-spider-green mb-6 border border-white/10 select-all">
-              "合租 + 套餐名 + 渠道名"
+        {/* Features Grid */}
+        <section className="py-16 px-4 bg-zinc-900/20">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-2xl font-bold text-center mb-12">核心优势</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <FeatureItem 
+                icon={<Globe className="text-blue-400" />} 
+                title="多引擎覆盖" 
+                desc="Bing, Google, Sogou, 360 全方位支持，提升综合索引率。" 
+                tooltip="针对不同搜索引擎算法特征优化 UA 与爬取策略，最大化收录权重。"
+              />
+              <FeatureItem 
+                icon={<BarChart3 className="text-purple-400" />} 
+                title="高频抓取" 
+                desc="模拟真实用户访问行为，高频次蜘蛛爬取，加速收录。" 
+                tooltip="动态 IP 池轮转技术，规避反爬策略，确保蜘蛛全天候稳定访问。"
+              />
+              <FeatureItem 
+                icon={<Shield className="text-spider-green" />} 
+                title="稳定安全" 
+                desc="系统长期稳定运行，日志实时可查，数据安全隔离。" 
+                tooltip="采用分布式架构与企业级防火墙，保障 99.9% 业务在线率。"
+              />
+              <FeatureItem 
+                icon={<Users className="text-yellow-400" />} 
+                title="独立权限" 
+                desc="每位成员分配独立系统后台，任务互不干扰。" 
+                tooltip="每个人拥有独立的操作面板与数据报表，资源互不共享，隐私无忧。"
+              />
             </div>
-            
-            <p className="text-sm text-gray-500 mb-8">例如：合租 3000 套餐 + Bing</p>
-            
-            <a 
-              href="https://qm.qq.com/q/9ZlQXDZQ4g"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-spider-green to-emerald-600 text-black font-black text-lg rounded-full shadow-[0_0_25px_rgba(0,255,157,0.3)] hover:scale-105 hover:shadow-[0_0_40px_rgba(0,255,157,0.5)] transition-all duration-300 animate-pulse-slow"
-            >
-              <MessageCircle size={22} fill="currentColor" className="opacity-80"/>
-              我要合租
-            </a>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="pb-12 pt-5 px-4 mt-5">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">产品套餐</h2>
-            <p className="text-gray-400">统一价格，全渠道适配，按需选择</p>
+        {/* Co-Rent Rules */}
+        <section className="py-16 px-4">
+          <div className="max-w-3xl mx-auto bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 sm:p-10">
+            <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
+              <Users className="text-spider-green" /> 合租组团规则
+            </h2>
+            <div className="space-y-6">
+              <RuleItem number="01" text="2–5 人即可成团，费用按人数透明平摊。" />
+              <RuleItem number="02" text="组团后自动建立合租小群，沟通便捷。" />
+              <RuleItem number="03" text="每位成员分配独立系统权限，数据隐私严格保护。" />
+              <RuleItem number="04" text="URL 与任务完全隔离，确保互不干扰。" />
+            </div>
           </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {PACKAGES.map((pkg) => (
-              <PricingCard key={pkg.id} pkg={pkg} isPopular={pkg.id === PackageType.BASIC} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Grid */}
-      <section className="py-16 px-4 bg-zinc-900/20">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-12">核心优势</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <FeatureItem 
-              icon={<Globe className="text-blue-400" />} 
-              title="多引擎覆盖" 
-              desc="Bing, Google, Sogou, 360 全方位支持，提升综合索引率。" 
-              tooltip="针对不同搜索引擎算法特征优化 UA 与爬取策略，最大化收录权重。"
-            />
-            <FeatureItem 
-              icon={<BarChart3 className="text-purple-400" />} 
-              title="高频抓取" 
-              desc="模拟真实用户访问行为，高频次蜘蛛爬取，加速收录。" 
-              tooltip="动态 IP 池轮转技术，规避反爬策略，确保蜘蛛全天候稳定访问。"
-            />
-            <FeatureItem 
-              icon={<Shield className="text-spider-green" />} 
-              title="稳定安全" 
-              desc="系统长期稳定运行，日志实时可查，数据安全隔离。" 
-              tooltip="采用分布式架构与企业级防火墙，保障 99.9% 业务在线率。"
-            />
-            <FeatureItem 
-              icon={<Users className="text-yellow-400" />} 
-              title="独立权限" 
-              desc="每位成员分配独立系统后台，任务互不干扰。" 
-              tooltip="每个人拥有独立的操作面板与数据报表，资源互不共享，隐私无忧。"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Co-Rent Rules */}
-      <section className="py-16 px-4">
-        <div className="max-w-3xl mx-auto bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 sm:p-10">
-          <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-            <Users className="text-spider-green" /> 合租组团规则
-          </h2>
-          <div className="space-y-6">
-            <RuleItem number="01" text="2–5 人即可成团，费用按人数透明平摊。" />
-            <RuleItem number="02" text="组团后自动建立合租小群，沟通便捷。" />
-            <RuleItem number="03" text="每位成员分配独立系统权限，数据隐私严格保护。" />
-            <RuleItem number="04" text="URL 与任务完全隔离，确保互不干扰。" />
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <footer className="py-8 text-center text-gray-600 text-sm border-t border-white/5">
         <p>© 2024 Shigy-SEO-Full Stack. All rights reserved.</p>
