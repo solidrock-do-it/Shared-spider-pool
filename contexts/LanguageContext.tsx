@@ -41,7 +41,7 @@ const getBrowserLanguage = (): Language => {
     // zh-cn, zh-sg -> Simplified
     if (lowerLang.includes('cn') || lowerLang.includes('sg')) return 'zh-CN';
     // zh-tw, zh-hk, zh-mo -> Traditional
-    return 'zh-TW';
+    return 'zh-HK';
   }
 
   // Specific Portuguese handling
