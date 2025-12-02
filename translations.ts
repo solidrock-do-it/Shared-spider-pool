@@ -107,7 +107,7 @@ export const translations = {
     tip_label: 'SEO 专家提示',
     online_service: '在线客服'
   },
-  'zh-TW': {
+  'zh-HK': {
     hero_badge: 'SEO矩陣出品',
     hero_title_1: '蜘蛛池 Spider-Pool',
     hero_title_2: '合租計劃',
