@@ -61,7 +61,7 @@ function App() {
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-spider-green/10 border border-spider-green/20 text-spider-green text-xs font-bold uppercase tracking-wider mb-6">
             <span className="w-2 h-2 rounded-full bg-spider-green animate-pulse"></span>
-            Shigy-SEO-FullStack 出品
+            SEO矩阵出品
           </div>
           <h1 className="flex flex-col gap-4 text-4xl sm:text-6xl font-black tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-500">
             <span>蜘蛛池 Spider-Pool</span>
