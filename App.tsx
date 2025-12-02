@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { PackageType, SpiderPackage } from './types';
 import { PricingCard } from './components/PricingCard';
@@ -7,6 +6,7 @@ import { Globe, Shield, Users, BarChart3, ChevronDown, CheckCircle2, MessageCirc
 import { useLanguage } from './contexts/LanguageContext';
 import { LANGUAGES } from './translations';
 import { CustomerService } from './components/CustomerService';
+import { ScrollToTop } from './components/ScrollToTop';
 
 const PACKAGES: SpiderPackage[] = [
   {
@@ -72,9 +72,6 @@ function App() {
       {/* Hero Section */}
       <header className="relative pt-24 pb-16 sm:pt-32 sm:pb-24 px-4 sm:px-6 lg:px-8 border-b border-white/5 z-50">
         
-        {/* Animated Background */}
-        <NetworkBackground />
-        
         {/* Language Switcher - Top Right */}
         <div className="absolute top-4 right-4 z-50">
           <div className="relative">
@@ -109,7 +106,13 @@ function App() {
           </div>
         </div>
 
+        {/* Background Layers - Order Matters for Visibility */}
+        {/* 1. Base Gradient */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-900/20 via-spider-dark to-spider-dark z-0 pointer-events-none"></div>
+        {/* 2. Animated Network (On top of gradient, behind content) */}
+        <NetworkBackground />
+        
+        {/* Main Content */}
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-spider-green/10 border border-spider-green/20 text-spider-green text-xs font-bold uppercase tracking-wider mb-6">
             <span className="w-2 h-2 rounded-full bg-spider-green animate-pulse"></span>
@@ -306,6 +309,7 @@ function App() {
       </footer>
       
       <CustomerService />
+      <ScrollToTop />
     </div>
   );
 }
