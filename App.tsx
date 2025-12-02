@@ -147,14 +147,14 @@ function App() {
       <section className="py-20 px-4 text-center" id="flow_cta">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl font-bold mb-8">合租流程</h2>
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-400 mb-12 relative">
-            <div className="z-10 bg-spider-dark px-2">提交需求</div>
-            <div className="hidden sm:block h-px bg-zinc-800 flex-1"></div>
-            <div className="z-10 bg-spider-dark px-2">自动组群</div>
-            <div className="hidden sm:block h-px bg-zinc-800 flex-1"></div>
-            <div className="z-10 bg-spider-dark px-2">平摊费用</div>
-            <div className="hidden sm:block h-px bg-zinc-800 flex-1"></div>
-            <div className="z-10 bg-spider-dark px-2">开始灌溉</div>
+          <div className="flex flex-row justify-between items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-400 mb-12 relative">
+            <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">提交需求</div>
+            <div className="h-px bg-zinc-800 flex-1"></div>
+            <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">自动组群</div>
+            <div className="h-px bg-zinc-800 flex-1"></div>
+            <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">平摊费用</div>
+            <div className="h-px bg-zinc-800 flex-1"></div>
+            <div className="z-10 bg-spider-dark px-1 sm:px-2 whitespace-nowrap">开始灌溉</div>
           </div>
 
           <div className="bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 p-8 rounded-2xl shadow-xl">
