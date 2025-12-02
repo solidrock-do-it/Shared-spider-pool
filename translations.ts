@@ -1,9 +1,9 @@
 
-export type Language = 'zh-CN' | 'zh-TW' | 'en' | 'vi' | 'id' | 'uk' | 'pl' | 'hi' | 'pt-BR' | 'es' | 'ja' | 'ko' | 'ru' | 'pt-PT' | 'de' | 'fr' | 'it' | 'nl';
+export type Language = 'zh-CN' | 'zh-HK' | 'en' | 'vi' | 'id' | 'uk' | 'pl' | 'hi' | 'pt-BR' | 'es' | 'ja' | 'ko' | 'ru' | 'pt-PT' | 'de' | 'fr' | 'it' | 'nl';
 
 export const LANGUAGES: { code: Language; label: string; flag: string }[] = [
   { code: 'zh-CN', label: '简体中文', flag: '🇨🇳' },
-  { code: 'zh-TW', label: '繁體中文', flag: '🇹🇼' },
+  { code: 'zh-HK', label: '繁體中文', flag: '🇭🇰' },
   { code: 'en', label: 'English', flag: '🇺🇸' },
   { code: 'es', label: 'Español', flag: '🇪🇸' },
   { code: 'pt-BR', label: 'Português (BR)', flag: '🇧🇷' },
@@ -693,7 +693,7 @@ export const translations = {
     feat_1_tip: 'Estrategias de UA y rastreo optimizadas para diferentes motores.',
     feat_2_title: 'Rastreo de Alta Frecuencia',
     feat_2_desc: 'Simula comportamiento real de usuario con rastreo frecuente.',
-    feat_2_tip: 'Rotación dinámica de IP para evitar bloqueos.',
+    feat_2_tip: 'Rotación dinámica de IP para evitar bloqueios.',
     feat_3_title: 'Estable y Seguro',
     feat_3_desc: 'Estabilidad a largo plazo, registros en tiempo real.',
     feat_3_tip: 'Arquitectura distribuida garantiza 99.9% de uptime.',
