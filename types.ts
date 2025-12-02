@@ -1,3 +1,6 @@
+
+import { translations } from './translations';
+
 export interface ChatMessage {
   role: 'user' | 'model';
   text: string;
@@ -10,9 +13,9 @@ export enum PackageType {
 
 export interface SpiderPackage {
   id: PackageType;
-  name: string;
+  nameKey: keyof typeof translations['zh-CN'];
   price: number;
-  spidersPerDay: string;
-  features: string[];
-  recommendedFor: string;
+  spidersPerDayKey: keyof typeof translations['zh-CN'] | string; // Special case for numbers
+  featuresKeys: (keyof typeof translations['zh-CN'])[];
+  recommendedForKey: keyof typeof translations['zh-CN'];
 }

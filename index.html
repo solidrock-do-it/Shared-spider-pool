@@ -46,6 +46,15 @@
       }
     </script>
     <style>
+      html {
+        font-size: 16px; /* Default for mobile */
+        -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape on iOS */
+      }
+      @media (min-width: 640px) {
+        html {
+          font-size: 18px; /* Larger font size for tablets and desktops */
+        }
+      }
       body {
         background-color: #0a0a0a;
         color: #ffffff;
