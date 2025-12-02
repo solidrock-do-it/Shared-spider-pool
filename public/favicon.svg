@@ -1,37 +1,30 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="512" height="512" rx="100" fill="#0a0a0a"/>
-  
-  <!-- Web -->
-  <g stroke="#00ff9d" stroke-width="4" stroke-opacity="0.3">
-    <circle cx="256" cy="256" r="80"/>
-    <circle cx="256" cy="256" r="140"/>
-    <circle cx="256" cy="256" r="200"/>
-    <line x1="256" y1="26" x2="256" y2="486"/>
-    <line x1="26" y1="256" x2="486" y2="256"/>
-    <line x1="93" y1="93" x2="419" y2="419"/>
-    <line x1="419" y1="93" x2="93" y2="419"/>
-  </g>
+  <!-- Web Radial Spokes -->
+  <line x1="256" y1="56" x2="256" y2="456" stroke="#00ff9d" stroke-width="32" stroke-linecap="round"/>
+  <line x1="56" y1="256" x2="456" y2="256" stroke="#00ff9d" stroke-width="32" stroke-linecap="round"/>
+  <line x1="114" y1="114" x2="398" y2="398" stroke="#00ff9d" stroke-width="32" stroke-linecap="round"/>
+  <line x1="398" y1="114" x2="114" y2="398" stroke="#00ff9d" stroke-width="32" stroke-linecap="round"/>
 
-  <!-- Spider Body -->
-  <g fill="#00ff9d">
-     <ellipse cx="256" cy="280" rx="40" ry="50" />
-     <circle cx="256" cy="210" r="25" />
-  </g>
-  
+  <!-- Web Connecting Arcs -->
+  <path d="M114 114 Q256 40 398 114 Q472 256 398 398 Q256 472 114 398 Q40 256 114 114" stroke="#00ff9d" stroke-width="24" stroke-linecap="round" fill="none" stroke-linejoin="round"/>
+
+  <!-- Spider Body - Masking the web behind it -->
+  <circle cx="256" cy="256" r="85" fill="#0a0a0a"/>
+
   <!-- Spider Legs -->
-  <g stroke="#00ff9d" stroke-width="12" stroke-linecap="round" fill="none">
-    <path d="M275 205 Q350 150 380 180" />
-    <path d="M285 220 Q370 200 390 240" />
-    <path d="M285 240 Q370 280 380 310" />
-    <path d="M275 260 Q340 340 350 360" />
+  <g stroke="#00ff9d" stroke-width="24" stroke-linecap="round" fill="none">
+    <path d="M220 230 C180 200 140 180 120 210"/>
+    <path d="M210 250 C160 240 130 240 110 270"/>
+    <path d="M210 270 C160 290 130 310 120 350"/>
+    <path d="M230 300 C190 360 180 380 170 410"/>
 
-    <path d="M237 205 Q162 150 132 180" />
-    <path d="M227 220 Q142 200 122 240" />
-    <path d="M227 240 Q142 280 132 310" />
-    <path d="M237 260 Q172 340 162 360" />
+    <path d="M292 230 C332 200 372 180 392 210"/>
+    <path d="M302 250 C352 240 382 240 402 270"/>
+    <path d="M302 270 C352 290 382 310 392 350"/>
+    <path d="M282 300 C322 360 332 380 342 410"/>
   </g>
-  
-  <!-- Eyes -->
-  <circle cx="248" cy="205" r="4" fill="#0a0a0a"/>
-  <circle cx="264" cy="205" r="4" fill="#0a0a0a"/>
+
+  <!-- Spider Body Parts -->
+  <ellipse cx="256" cy="280" rx="45" ry="60" fill="#00ff9d"/>
+  <circle cx="256" cy="215" r="35" fill="#00ff9d"/>
 </svg>
