@@ -3,7 +3,7 @@ export type Language = 'zh-CN' | 'zh-HK' | 'en' | 'vi' | 'id' | 'uk' | 'pl' | 'h
 
 export const LANGUAGES: { code: Language; label: string; flag: string }[] = [
   { code: 'zh-CN', label: '简体中文', flag: '🇨🇳' },
-  { code: 'zh-HK', label: '繁體中文', flag: '🇭🇰' },
+  { code: 'zh-HK', label: '香港', flag: '🇭🇰' },
   { code: 'en', label: 'English', flag: '🇺🇸' },
   { code: 'es', label: 'Español', flag: '🇪🇸' },
   { code: 'pt-BR', label: 'Português (BR)', flag: '🇧🇷' },
@@ -64,7 +64,7 @@ export const translations = {
     
     pkg_basic_name: '基础灌溉套餐',
     pkg_basic_rec: '中小站点 / 快速收录',
-    pkg_basic_feat_1: '覆盖 Bing / Google / Sogou / 360',
+    pkg_basic_feat_1: '覆盖 Baidu / Bing / Google / Sogou / 360',
     pkg_basic_feat_2: '域名数量不限',
     pkg_basic_feat_3: 'URL 提交数量不限',
     pkg_basic_feat_4: '独立系统后台权限',
@@ -81,7 +81,7 @@ export const translations = {
 
     feat_title: '核心优势',
     feat_1_title: '多引擎覆盖',
-    feat_1_desc: 'Bing, Google, Sogou, 360 全方位支持，提升综合索引率。',
+    feat_1_desc: 'Baidu, Bing, Google, Sogou, 360 全方位支持，提升综合索引率。',
     feat_1_tip: '针对不同搜索引擎算法特征优化 UA 与爬取策略，最大化收录权重。',
     
     feat_2_title: '高频抓取',

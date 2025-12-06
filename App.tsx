@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { PackageType, SpiderPackage } from './types';
 import { PricingCard } from './components/PricingCard';
@@ -45,7 +46,7 @@ const allEngines = [
   { name: 'Google', available: true },
   { name: 'Sogou', available: true },
   { name: '360', available: true },
-  { name: 'Baidu', available: false },
+  { name: 'Baidu', available: true },
 ];
 
 function App() {
